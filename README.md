@@ -1,8 +1,8 @@
-# Lambda Application 
+# :rocket: Lambda Application 
 <img src="file:///Users/hyunbok.lee/Downloads/awslambda.svg" width="200" height="200" /
 
 
-### 라이브러리
+## 라이브러리
 
 ```
 import json
@@ -10,7 +10,7 @@ import urllib.parse
 import boto3
 ```
 
-### 변수 
+## 변수 
 ```
 target_role = '특정 타겟 Iam Role' 
 error_log_name = 'Error 문구'
@@ -19,16 +19,21 @@ target_email = 'cloud-noti@kakaobank.com'
 
 ```
 
-### 코드 구현
-1. 타겟 s3에서 이벤트를 받기 때문에 Lambda_Handler 함수 구현 
+## 코드 구현
+### Lambda_Handler 
+* bucket : 버킷 네임 추출 
+* ob_key : object 키 추출
+* data : 버킷과 Object 키 조합으로 데이터 추출 
+    * contents: data['Body']를 이용해 object 파일 내용 
 ```
 def lambda_handler(event, context):
-    bucket = event['Records'][0]['s3']['bucket']['name'] # Records 0번째 bucket 항목에 name 값 bucket 변수 저장 
+    bucket = event['Records'][0]['s3']['bucket']['name'] 
     ob_key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')  
     data = s3.get_object(Bucket=bucket, Key=ob_key) 
     contents = data['Body'].read().decode('utf-8')
 ```
-S3 이벤트 예제 
+### S3 이벤트 예제 
+
 ```
 {
   "Records": [
