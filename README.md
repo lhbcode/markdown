@@ -33,6 +33,7 @@ def lambda_handler(event, context):
     contents = data['Body'].read().decode('utf-8')
 ```
 * S3 이벤트 예제 
+   * 위 버킷네임, 오브젝트 키 추출은 아래 이벤트 형식에 따라 구성 됩니다.  
 
 ```
 {
