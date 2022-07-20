@@ -32,7 +32,7 @@ def lambda_handler(event, context):
     data = s3.get_object(Bucket=bucket, Key=ob_key) 
     contents = data['Body'].read().decode('utf-8')
 ```
-### S3 이벤트 예제 
+* S3 이벤트 예제 
 
 ```
 {
@@ -75,7 +75,7 @@ def lambda_handler(event, context):
 }
 ```
 
-2. 비인가 데이터 검색 조건 및 SES 메일 전송 
+### 비인가 데이터 검색 조건 및 SES 메일 전송 
   error_log_name: 'NoSuchBucketPolicy', target_role: '타겟 Iam Role Name'이 AND 조건으로 'contents'에 포함되면 
   AWS SES 메일 전송이 됩니다. 
   
@@ -94,12 +94,12 @@ def lambda_handler(event, context):
             "Body": {
                 "Text": {
                     "Charset": CHARSET,
-                    "Data": "비정상 행위 발생",
+                    "Data": "비정상 행위 발생", # 내용 입력 
                 }
             },
             "Subject": {
                 "Charset": CHARSET,
-                "Data": "비인가 접근 탐지",
+                "Data": "비인가 접근 탐지", # Email 제목 
             },
         },
         Source=source_email,)
