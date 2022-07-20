@@ -26,7 +26,7 @@ def lambda_handler(event, context):
     data = s3.get_object(Bucket=bucket, Key=ob_key) 
     contents = data['Body'].read().decode('utf-8')
 ```
-a. S3 이벤트 예제 
+    a. S3 이벤트 예제 
 ```
 {
   "Records": [
