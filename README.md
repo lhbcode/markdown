@@ -1,5 +1,5 @@
 # :rocket: Lambda Application 
-<img src="file:///Users/hyunbok.lee/Downloads/awslambda.svg" width="200" height="200" /
+
 
 
 ## 라이브러리
